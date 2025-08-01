@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Para mi persona favorita</title>
+</head>
+<body>
+  <div>
+    <h1>💖 Para mi persona favorita 💖</h1>
+    <button id="btnAmor">Pulsar</button>
+    <div id="mensaje"></div>
+
+    <!-- Gatitos rebotando -->
+    <img src="https://i.pinimg.com/736x/89/af/64/89af64e6b95f9c2906cf2fa37f125609.jpg" class="gatito" id="gato1" />
+    <img src="https://i.pinimg.com/736x/89/af/64/89af64e6b95f9c2906cf2fa37f125609.jpg" class="gatito" id="gato2" />
+    <img src="https://i.pinimg.com/736x/89/af/64/89af64e6b95f9c2906cf2fa37f125609.jpg" class="gatito" id="gato3" />
+  </div>
+  <script>
+    // Movimiento de los gatitos
+    function crearGatitoRebotando(id) {
+      const gatito = document.getElementById(id);
+      let x = Math.random() * window.innerWidth * 0.8;
+      let y = Math.random() * window.innerHeight * 0.8;
+      let dx = (Math.random() < 0.5 ? -1 : 1) * (2 + Math.random() * 2);
+      let dy = (Math.random() < 0.5 ? -1 : 1) * (2 + Math.random() * 2);
+
+      function mover() {
+        x += dx;
+        y += dy;
+
+        if (x <= 0 || x + gatito.width >= window.innerWidth) dx *= -1;
+        if (y <= 0 || y + gatito.height >= window.innerHeight) dy *= -1;
+
+        gatito.style.left = x + "px";
+        gatito.style.top = y + "px";
+
+        requestAnimationFrame(mover);
+      }
+      mover();
+    }
+
+    crearGatitoRebotando("gato1");
+    crearGatitoRebotando("gato2");
+    crearGatitoRebotando("gato3");
+
+    // Funcionalidad de mensajes
+    let mensajes = [
+      "Eres la razón de mi sonrisa.",
+      "Pensar en ti hace que mi día sea mejor.",
+      "Tu voz es mi canción favorita.",
+      "Eres mi lugar favorito, aunque estemos lejos.",
+      "Cada día que pasa te quiero más.",
+      "Eres la estrella que ilumina mi noche.",
+      "No hay distancia que pueda apagar lo que siento por ti.",
+      "Eres el primer pensamiento en mi mente cada mañana.",
+      "Contigo, la distancia es solo un número.",
+      "Eres mi persona favorita en todo el universo.",
+      "Mi corazón te pertenece, no importa dónde estemos.",
+      "Me robaste el corazón, y no quiero que me lo devuelvas.",
+      "Anhelo el día en que nos podamos ver.",
+      "Eres pura magia.",
+      "La distancia nos hace más fuertes.",
+      "Eres mi sueño hecho realidad.",
+      "Eres mi calma en la distancia.",
+      "Siempre estoy pensando en ti.",
+      "Eres mis 5 segundos de valor en este mundo."
+    ];
+
+    let mensajesDisponibles = [...mensajes];
+    const btn = document.getElementById("btnAmor");
+    const msgDiv = document.getElementById("mensaje");
+
+    btn.addEventListener("click", () => {
+      if (mensajesDisponibles.length === 0) {
+        mostrarMensajeEspecial();
+        mensajesDisponibles = [...mensajes];
+        return;
+      }
+
+      const random = Math.floor(Math.random() * mensajesDisponibles.length);
+      const mensajeSeleccionado = mensajesDisponibles.splice(random, 1)[0];
+      msgDiv.textContent = mensajeSeleccionado;
+
+      crearCorazon();
+    });
+
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+      corazon.textContent = "♥";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), 5000);
+    }
+
+    function mostrarMensajeEspecial() {
+      const mensajeEspecial = document.createElement("div");
+      mensajeEspecial.textContent = "Ya viste todos mis mensajes 💚 Te quiero";
+      mensajeEspecial.style.position = "fixed";
+      mensajeEspecial.style.top = "50%";
+      mensajeEspecial.style.left = "50%";
+      mensajeEspecial.style.transform = "translate(-50%, -50%)";
+      mensajeEspecial.style.fontSize = "3em";
+      mensajeEspecial.style.color = "white";
+      mensajeEspecial.style.textShadow = "2px 2px 8px #000000aa";
+      mensajeEspecial.style.zIndex = "999";
+      document.body.appendChild(mensajeEspecial);
+    }
+  </script>
+</body>
+</html>
+        setTimeout(() => crearCorazon(), i * 150);
+      }
+
+      setTimeout(() => mensajeEspecial.remove(), 5000);
+</script>
+</div>
